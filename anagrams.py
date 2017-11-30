@@ -2,8 +2,11 @@ import sys
 import time
 import itertools
 
+# An anagram solver
 class anagram_solver():
     def __init__(self, filepath):
+        # The maximum length of a legal word is 100 as specified
+        # Hence, break down the words according to their lengths
         self.buckets = [None] * 100
         dictionary = []
         # read and sort all the words in the dictionary
@@ -23,6 +26,8 @@ class anagram_solver():
                 bucket = self.buckets[l]
                 bucket.append((word, anagrams))
 
+    # Helper method to spot whether a word is an anagram of the
+    # key words contained in the dictionary
     def contains(self, word):
         l = len(word)
         bucket = self.buckets[l]
@@ -47,12 +52,18 @@ class anagram_solver():
         res = " ".join(ans)
         return res
 
+    # Helper function to generate all permutations (anagrams) of a word
     def generate(self, word):
         anagrams = set(["".join(perm) for perm in itertools.permutations(word)])
         return anagrams
 
+# Initialize our anagram solver with file path of the dictionary,
+# which is passed in as a command line argument
 filepath = sys.argv[-1]
 solver = anagram_solver(filepath)
+
+# While program active, keep reading from stdin to process
+# When encountering null string, exit program automatically
 while 1:
     time.sleep(0.01)
     for line in sys.stdin:
