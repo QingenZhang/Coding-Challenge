@@ -1,5 +1,5 @@
-Read Me
----------------------------------------
+                                          Read Me
+------------------------------------------------------------------------------------------
 Question 1: What is the running time of your program?
 Answer:
     Offline part: suppose the dictionary contains N words and the average length of each word
